@@ -8,12 +8,13 @@ import (
 
 func main() {
 
-    http.HandleFunc("/", SayHello)
+    http.HandleFunc("/", sayHello)
 
     log.Fatal(http.ListenAndServe(":8080", nil))
 
 }
 
-func SayHello(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "Hello World!")
+func sayHello(w http.ResponseWriter, r *http.Request) {
+        w.Header().Set("Content-Type", "text/html")
+        fmt.Fprintf(w, "Hello World! From Golang.")
 }
